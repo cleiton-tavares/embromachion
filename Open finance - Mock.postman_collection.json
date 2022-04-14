@@ -89,7 +89,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/balance/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/account/:id/balance/batch?save_storage=1&save_csv=1&items=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -97,6 +97,7 @@
 							"port": "3002",
 							"path": [
 								"account",
+								":id",
 								"balance",
 								"batch"
 							],
@@ -112,6 +113,12 @@
 								{
 									"key": "items",
 									"value": "1000"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -307,6 +314,72 @@
 								"account",
 								":id",
 								"overdraft-limits"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreditCard",
+			"item": [
+				{
+					"name": "Credit Card - Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/credit-card/account/:id/batch?save_storage=1&save_csv=1&items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"credit-card",
+								"account",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1"
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
 							],
 							"variable": [
 								{
