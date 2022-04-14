@@ -9,7 +9,13 @@ module.exports = ({ models, services }) => {
   const { Account } = models.account;
   const { Batch, Response } = services.index;
 
-  class AccountController{
+  class AccountController {
+    static getParams(query) {
+      return {
+        csv: query.save_csv,
+        storage: query.save_storage
+      }
+    }
     static async getAccount(req, res){
       try {
         return res.json(new Response(new Account()));
@@ -21,7 +27,8 @@ module.exports = ({ models, services }) => {
     static async getAccountBatch(req, res){
       try {
         let accounts = Batch.generateBatch(req.query.items, Account);
-        return Batch.response(res, req.query.save_csv, accounts);
+        const params = AccountController.getParams(req.query);
+        return Batch.response(res, 'getAccountBatch', params, accounts);
       } catch (e) {
         console.error(e, req.traceID);
         return res.json(e.message);
@@ -30,9 +37,10 @@ module.exports = ({ models, services }) => {
     static async getAccountIdBatch(req, res){
       try {
         let accounts = Batch.generateBatch(req.query.items, Account);
+        const params = AccountController.getParams(req.query);
         let result = [];
         accounts.map(accounts => result.push(accounts.account));
-        return Batch.response(res, req.query.save_csv, result);
+        return Batch.response(res, 'getAccountIdBatch', params, result);
       } catch (e) {
         console.error(e, req.traceID);
         return res.json(e.message);
@@ -49,9 +57,10 @@ module.exports = ({ models, services }) => {
     static async getAccountBalanceBatch(req, res){
       try {
         let accounts = Batch.generateBatch(req.query.items, Account);
+        const params = AccountController.getParams(req.query);
         let result = [];
         accounts.map(accounts => result.push(accounts.balance));
-        return Batch.response(res, req.query.save_csv, result);
+        return Batch.response(res, 'getAccountBalanceBatch', params, result);
       } catch (e) {
         console.error(e, req.traceID);
         return res.json(e.message);
@@ -68,9 +77,10 @@ module.exports = ({ models, services }) => {
     static async getAccountTransactionsBatch(req, res){
       try {
         let accounts = Batch.generateBatch(req.query.items, Account);
+        const params = AccountController.getParams(req.query);
         let result = [];
         accounts.map(accounts => result.push(accounts.transactions));
-        return Batch.response(res, req.query.save_csv, result);
+        return Batch.response(res, 'getAccountTransactionsBatch', params, result);
       } catch (e) {
         console.error(e, req.traceID);
         return res.json(e.message);
@@ -87,9 +97,10 @@ module.exports = ({ models, services }) => {
     static async getAccountLimitsBatch(req, res){
       try {
         let accounts = Batch.generateBatch(req.query.items, Account);
+        const params = AccountController.getParams(req.query);
         let result = [];
         accounts.map(accounts => result.push(accounts.limits));
-        return Batch.response(res, req.query.save_csv, result);
+        return Batch.response(res, 'getAccountLimitsBatch', params, result);
       } catch (e) {
         console.error(e, req.traceID);
         return res.json(e.message);

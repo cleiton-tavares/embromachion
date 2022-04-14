@@ -4,7 +4,9 @@ const { Response } = require('./response');
  * @namespace app.services.batch
  * @returns {{Batch: Batch}}
  */
-module.exports = () => {
+module.exports = ({ configs }) => {
+
+  const { blobServiceClient } = configs.storage;
 
   class Batch{
     static generateBatch(items, entity){
@@ -18,11 +20,28 @@ module.exports = () => {
     static generateCSVFile(data){
       return json2csv.parse(data);
     }
-    static response(res, csv, data){
-      if(csv) {
+    static async response(res, api, params, data){
+      if(params.storage) {
+        const content = params.csv ? Buffer.from(Batch.generateCSVFile(data)) : JSON.stringify(data);
+        const response = await Batch.saveInBlobStorage(
+            api,
+            content,
+            params.csv ? 'csv' : 'json'
+        );
+        return res.json({ message: 'Saved with success!', data: response});
+      } else if(params.csv) {
         return res.set('Content-Type', 'text/csv').send(Buffer.from(Batch.generateCSVFile(data)));
       }
       return res.json(new Response(data));
+    }
+    static async saveInBlobStorage(name, data, extension){
+      const containerClient = blobServiceClient.getContainerClient(__ENV__.STORAGE_CONTAINER);
+      const content = data;
+      const blobName = `${name}${new Date().getTime()}.${extension}`;
+      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+      const uploadBlobResponse = await blockBlobClient.upload(content, content.length);
+      console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+      return { blobName, requestId: uploadBlobResponse.requestId };
     }
   }
 
