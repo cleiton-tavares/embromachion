@@ -14,28 +14,40 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/batch?save_storage=1&save_csv=1&items=100",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/batch?items=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
+								":id",
 								"batch"
 							],
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
-									"value": "100"
+									"value": "1000"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -48,25 +60,31 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/:id/batch?save_storage=1&save_csv=1&items=100",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/id/batch?items=100",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
 								":id",
+								"id",
 								"batch"
 							],
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
@@ -76,7 +94,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "1"
 								}
 							]
 						}
@@ -89,26 +107,30 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/:id/balance/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/balance?items=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
 								":id",
-								"balance",
-								"batch"
+								"balance"
 							],
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
@@ -131,14 +153,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/transactions/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/transactions/batch?save_storage=1&save_csv=1&items=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
+								":id",
 								"transactions",
 								"batch"
 							],
@@ -155,6 +181,12 @@
 									"key": "items",
 									"value": "1000"
 								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -166,14 +198,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/overdraft-limits/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/overdraft-limits/batch?save_storage=1&save_csv=1&items=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
+								":id",
 								"overdraft-limits",
 								"batch"
 							],
@@ -190,45 +226,6 @@
 									"key": "items",
 									"value": "1000"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/account",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"account"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account/:id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/account/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"account",
-								":id"
 							],
 							"variable": [
 								{
@@ -241,18 +238,72 @@
 					"response": []
 				},
 				{
-					"name": "Account/:id/balance",
+					"name": "Account",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/:id/balance",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
+								"account",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account/:id/balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
 								":id",
 								"balance"
@@ -273,22 +324,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/:id/transactions",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/transactions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
 								":id",
 								"transactions"
 							],
 							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								},
 								{
 									"key": "id",
 									"value": "1"
@@ -304,13 +354,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account/:id/overdraft-limits",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/overdraft-limits",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
+								"open-banking",
+								"accounts",
+								"v1",
 								"account",
 								":id",
 								"overdraft-limits"
@@ -344,6 +397,66 @@
 							"port": "3002",
 							"path": [
 								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - account/:id/bills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/bills",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-account",
+								"v1",
+								"account",
+								":id",
+								"bills"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - account/:id/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-account",
+								"v1",
+								"account",
+								":id",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
