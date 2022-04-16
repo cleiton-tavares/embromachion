@@ -1,4 +1,4 @@
-class Response{
+class Response {
   constructor(data) {
     this.data = data;
     this.links = {
@@ -16,4 +16,8 @@ class Response{
   }
 }
 
+/**
+ * @namespace app.services.response
+ * @type {{Response: Response}}
+ */
 module.exports = { Response };
