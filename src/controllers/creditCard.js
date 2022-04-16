@@ -31,7 +31,7 @@ module.exports = ({ models, services }) => {
         return Batch.response(res, 'getCreditCardAccountBatch', params, creditCards);
       } catch (e) {
         console.error(e, req.traceID);
-        return res.json(e.message);
+        return res.json(new Response(e.message));
       }
     }
   }

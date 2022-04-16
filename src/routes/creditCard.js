@@ -5,10 +5,19 @@
  */
 module.exports = ({ express, controllers }) => {
 
-  const { CreditCardController } = controllers.creditCard;
+  const { IndexController } = controllers.index;
 
-  express.get('/credit-card/account', CreditCardController.getCreditCardAccount);
-
-  express.get('/credit-card/account/:id/batch', CreditCardController.getCreditCardAccountBatch);
+  // REGULAR ROUTES
+  express.get('/open-banking/credit-cards-accounts/v1/account', (req, res) => IndexController.sigleApi('CreditCard', '', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id', (req, res) => IndexController.sigleApi('CreditCard', 'account', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/bills', (req, res) => IndexController.sigleApi('CreditCard', 'bills', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/transactions', (req, res) => IndexController.sigleApi('CreditCard', 'transactions', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/limits',(req, res) => IndexController.sigleApi('CreditCard', 'limits', req, res));
+  // BATCH ROUTES
+  express.get('/open-banking/credit-cards-account/v1/account/:id/batch', (req, res) => IndexController.batchApi('CreditCard', '', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/id/batch', (req, res) => IndexController.batchApi('CreditCard', 'account', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/bills/batch',  (req, res) => IndexController.batchApi('CreditCard', 'bills', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/transactions/batch',  (req, res) => IndexController.batchApi('CreditCard', 'transactions', req, res));
+  express.get('/open-banking/credit-cards-account/v1/account/:id/limits/batch',  (req, res) => IndexController.batchApi('CreditCard', 'limits', req, res));
 
 };

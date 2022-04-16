@@ -50,22 +50,24 @@ function randomize(size){
 
 class Account {
   constructor(id) {
-    this.brandName = faker.company.companyName();
-    this.companyCnpj = faker.random.number();
-    this.type = AccountTypes[randomize(3)];
-    this.compeCode = faker.random.number(999);
-    this.branchCode = faker.random.number(9999);
-    this.number = faker.random.number();
-    this.checkDigit = faker.random.number(9);
-    this.accountId = id || faker.random.uuid();
+    this[0] = {
+      brandName: faker.company.companyName(),
+      companyCnpj: faker.random.number(99999999999999),
+      type: AccountTypes[randomize(3)],
+      compeCode: faker.random.number(999),
+      branchCode: faker.random.number(9999),
+      number: faker.random.number(),
+      checkDigit: faker.random.number(9),
+      accountId: id || faker.random.uuid()
+    };
   }
   get account(){
     return {
-      compeCode: this.compeCode,
-      branchCode: this.branchCode,
-      number: this.number,
-      checkDigit: this.number,
-      type: this.type,
+      compeCode: this[0].compeCode,
+      branchCode: this[0].branchCode,
+      number: this[0].number,
+      checkDigit: this[0].number,
+      type: this[0].type,
       subtype: AccountSubTypes[randomize(3)],
       currency: "BRL"
     }
@@ -84,7 +86,22 @@ class Account {
     let items = [];
     const size = randomize(100);
     for(let i = 0; i < size; i++){
-      items.push(this.transaction());
+      items.push({
+        transactionId: faker.random.uuid(),
+        completedAuthorisedPaymentType: creditDebitTypes[randomize(2)],
+        creditDebitType: transactionNames[randomize(2)],
+        transactionName: `TXpRMU9UQ${faker.random.uuid()}WhZV2${faker.random.uuid()}`,
+        type: transactionTypes[randomize(17)],
+        amount: faker.random.float({ precision: 0.1 }),
+        transactionCurrency: "BRL",
+        transactionDate: faker.date.past(),
+        partieCnpjCpf: faker.random.number(99999999999999),
+        partiePersonType: partiePersonTypes[randomize(2)],
+        partieCompeCode: this[0].compeCode,
+        partieBranchCode: this[0].branchCode,
+        partieNumber: this[0].number,
+        partieCheckDigit: this[0].checkDigit
+      });
     }
     return items;
   }
@@ -96,24 +113,6 @@ class Account {
       overdraftUsedLimitCurrency: "BRL",
       unarrangedOverdraftAmount: faker.random.float({ precision: 0.1 }),
       unarrangedOverdraftAmountCurrency: "BRL"
-    }
-  }
-  transaction(){
-    return {
-      transactionId: faker.random.uuid(),
-      completedAuthorisedPaymentType: creditDebitTypes[randomize(2)],
-      creditDebitType: transactionNames[randomize(2)],
-      transactionName: `TXpRMU9UQ${faker.random.uuid()}WhZV2${faker.random.uuid()}`,
-      type: transactionTypes[randomize(17)],
-      amount: faker.random.float({ precision: 0.1 }),
-      transactionCurrency: "BRL",
-      transactionDate: faker.date.past(),
-      partieCnpjCpf: faker.random.number(99999999999999),
-      partiePersonType: partiePersonTypes[randomize(2)],
-      partieCompeCode: this.compeCode,
-      partieBranchCode: this.branchCode,
-      partieNumber: this.number,
-      partieCheckDigit: this.checkDigit
     }
   }
 }

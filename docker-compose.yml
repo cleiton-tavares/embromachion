@@ -4,12 +4,19 @@ services:
       context: .
     env_file: .env
     restart: always
+    volumes:
+      - type: bind
+        source: ./src
+        target: /var/www/src
     ports:
       - ${PORT}:${PORT}
     depends_on:
       - azurite
+    links:
+      - azurite
   azurite:
     image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
     restart: always
     ports:
       - '10000:10000'
