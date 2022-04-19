@@ -33,6 +33,22 @@ const InformedIncomeFrequencyType = [
     "DIARIA", "SEMANAL", "QUINZENAL", "MENSAL", "BIMESTRAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL", "SEM_FREQUENCIA_RENDA_INFORMADA", "OUTROS"
 ]
 
+const ProductServicesType = [
+    "CONTA_DEPOSITO_A_VISTA", "CONTA_POUPANCA", "CONTA_PAGAMENTO_PRE_PAGA", "CARTAO_CREDITO", "OPERACAO_CREDITO", "SEGURO", "PREVIDENCIA", "INVESTIMENTO", "OPERACOES_CAMBIO", "CONTA_SALARIO", "CREDENCIAMENTO", "OUTROS"
+]
+
+const ProcuratorsTypePersonal = [
+    "REPRESENTANTE_LEGAL", "PROCURADOR", "NAO_APLICA"
+]
+
+const BusinessAccountType = [
+    "CONTA_DEPOSITO_A_VISTA", "CONTA_POUPANCA", "CONTA_PAGAMENTO_PRE_PAGA", "SEM_TIPO_CONTA"
+]
+
+const SubTypePersonalAccount = [
+    "INDIVIDUAL", "CONJUNTA_SIMPLES", "CONJUNTA_SOLIDARIA", "SEM_SUB_TIPO_CONTA"
+]
+
 function randomize(size) {
     return Math.floor(Math.random() * size)
 }
@@ -166,7 +182,41 @@ class Customer {
             }
         }
     }
+    get personalFinancialRelations(){
+        let productsServicesTypeArray = [];
+        for (let i = 0; i < randomize(12); i++) {
+            productsServicesTypeArray.push(ProductServicesType[randomize(12)]);
+        }
+        let procuratorsArray = [];
+        for (let i = 0; i < randomize(3); i++) {
+            procuratorsArray.push({
+                type: ProcuratorsTypePersonal[randomize(3)],
+                cpfNumber: faker.datatype.number(99999999999).toString(),
+                civilName: faker.fake('{{name.firstName}} {{name.lastName}}'),
+                socialName: faker.name.firstName()
+            });
+        }
+        let accountArray = [];
+        for (let i = 0; i < randomize(3); i++) {
+            accountArray.push({
+                compeCode: faker.datatype.number(999).toString(),
+                branchCode: faker.datatype.number(9999).toString(),
+                number: faker.datatype.number(9999999).toString(),
+                checkDigit: faker.datatype.number(9).toString(),
+                type: BusinessAccountType[randomize(4)],
+                subtype: SubTypePersonalAccount[randomize(4)]
+            });
+        }
 
+        return{
+            updateDateTime: faker.date.past(),
+            startDate: faker.date.recent(),
+            productsServicesType: productsServicesTypeArray,
+            productsServicesTypeAdditionalInfo: faker.datatype.string(100),
+            procurators: procuratorsArray,
+            accounts: accountArray
+        }
+    }
 }
 
 module.exports = {Customer};
