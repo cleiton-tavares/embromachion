@@ -79,7 +79,7 @@ class Customer {
                 socialName: "NA"
             });
         }
-        return {
+        return [{
             updateDateTime: faker.date.past(),
             personalId: faker.random.uuid(),
             brandName: faker.company.companyName(),
@@ -137,8 +137,12 @@ class Customer {
                     }
                 ]
             }
-        }
+        }]
     }
+    get personalQualifications(){
+
+    }
+
 }
 
 module.exports = {Customer};
