@@ -11,14 +11,6 @@ module.exports = ({ express, controllers }) => {
 
   const baseApi = '/open-banking/unarranged-accounts-overdraft/v1/contracts';
 
-  const singleApiFunction = (req, res, api) => {
-    return IndexController.sigleApi(model, api, req, res);
-  }
-
-  const batchApiFunction = (req, res, api) => {
-    return IndexController.batchApi(model, api, req, res);
-  }
-
   // REGULAR ROUTES
   express.get(baseApi, (req, res) => IndexController.sigleApi(model, '', req, res));
   express.get(`${baseApi}/:id`, (req, res) => IndexController.sigleApi(model, 'contract', req, res));
