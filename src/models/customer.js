@@ -25,6 +25,14 @@ const PhoneType = [
     "FIXO", "MOVEL", "OUTRO"
 ]
 
+const OccupationMainCodeType = [
+    "RECEITA_FEDERAL", "CBO", "OUTRO"
+]
+
+const InformedIncomeFrequencyType = [
+    "DIARIA", "SEMANAL", "QUINZENAL", "MENSAL", "BIMESTRAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL", "SEM_FREQUENCIA_RENDA_INFORMADA", "OUTROS"
+]
+
 function randomize(size) {
     return Math.floor(Math.random() * size)
 }
@@ -140,7 +148,23 @@ class Customer {
         }]
     }
     get personalQualifications(){
-
+        return {
+            updateDateTime: faker.date.past(),
+            companyCnpj: faker.datatype.number(99999999999999).toString(),
+            occupationCode: OccupationMainCodeType[randomize(3)],
+            occupationDescription: faker.datatype.number(99).toString(),
+            informedIncome: {
+                frequency: InformedIncomeFrequencyType[randomize(10)],
+                amount: faker.datatype.float({ precision: 0.2 }),
+                currency: "BRL",
+                date: formatDate(faker.date.past())
+            },
+            informedPatrimony: {
+                amount: faker.datatype.float({ precision: 0.2 }),
+                currency: "BRL",
+                year: faker.date.past().getFullYear()
+            }
+        }
     }
 
 }
