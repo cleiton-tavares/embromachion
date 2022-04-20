@@ -48,6 +48,17 @@ const BusinessAccountType = [
 const SubTypePersonalAccount = [
     "INDIVIDUAL", "CONJUNTA_SIMPLES", "CONJUNTA_SOLIDARIA", "SEM_SUB_TIPO_CONTA"
 ]
+const PersonType =[
+    "PESSOA_NATURAL", "PESSOA_JURIDICA"
+]
+
+const ParticipationType = [
+    "SOCIO", "ADMINISTRADOR"
+]
+
+const DocumentParticipationType = [
+    "CPF", "PASSAPORTE", "OUTRO_DOCUMENTO_VIAGEM", "CNPJ"
+]
 
 function randomize(size) {
     return Math.floor(Math.random() * size)
@@ -218,9 +229,83 @@ class Customer {
         }
     }
     get businessIdentifications(){
-        return {
-
+        let companyCnpjNumberArray = [];
+        for (let i = 0; i < randomize(3); i++) {
+            companyCnpjNumberArray.push(faker.datatype.number(99999999999999).toString());
         }
+        return [{
+            updateDateTime: faker.date.past(),
+            businessId: faker.random.uuid(),
+            brandName: faker.company.bs(),
+            companyName: faker.company.companyName(),
+            tradeName: faker.company.bsNoun(),
+            incorporationDate: faker.date.past(),
+            cnpjNumber: faker.datatype.number(99999999999999).toString(),
+            companyCnpjNumber: companyCnpjNumberArray,
+            otherDocuments: [
+                {
+                    type: faker.random.alpha(20),
+                    number: faker.datatype.number(9999999999).toString(),
+                    country: faker.address.countryCode('alpha-3'),
+                    expirationDate: formatDate(faker.date.future())
+                }
+            ],
+            parties: [
+                {
+                    personType: PersonType[randomize(2)],
+                    type: ParticipationType[randomize(2)],
+                    civilName: faker.fake('{{name.firstName}} {{name.lastName}}'),
+                    socialName: faker.name.firstName(),
+                    companyName: faker.company.companyName(),
+                    tradeName: faker.company.bsNoun(),
+                    startDate: faker.date.past(),
+                    shareholding: faker.datatype.float({ precision: 0.1 }).toString(),
+                    documentType: DocumentParticipationType[randomize(4)],
+                    documentNumber: faker.datatype.number(9999999999).toString(),
+                    documentAdditionalInfo: faker.random.alpha(50),
+                    documentCountry: faker.address.countryCode('alpha-3'),
+                    documentExpirationDate: formatDate(faker.date.future()),
+                    documentIssueDate: formatDate(faker.date.past())
+                }
+            ],
+            contacts: {
+                postalAddresses: [
+                    {
+                        isMain: true,
+                        address: faker.address.streetAddress(true),
+                        additionalInfo: faker.address.secondaryAddress(),
+                        districtName: faker.address.county(),
+                        townName: faker.address.cityName(),
+                        ibgeTownCode: faker.datatype.number(99999).toString(),
+                        countrySubDivision: faker.address.county(),
+                        postCode: faker.address.zipCode(),
+                        country: faker.address.country(),
+                        countryCode: faker.address.country('alpha-3'),
+                        geographicCoordinates: {
+                            latitude: faker.address.latitude(),
+                            longitude: faker.address.longitude()
+                        }
+                    }
+                ],
+                phones: [
+                    {
+                        isMain: true,
+                        type: PhoneType[randomize(3)],
+                        additionalInfo: faker.random.alpha(40),
+                        countryCallingCode: faker.phone.phoneNumber(),
+                        areaCode: faker.datatype.number(99).toString(),
+                        number: faker.phone.phoneNumber(),
+                        phoneExtension: faker.datatype.number(999).toString()
+                    }
+                ],
+                emails: [
+                    {
+                        isMain: true,
+                        email: faker.internet.email()
+                    }
+                ]
+            }
+        }]
     }
 }
 
