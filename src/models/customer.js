@@ -217,6 +217,11 @@ class Customer {
             accounts: accountArray
         }
     }
+    get businessIdentifications(){
+        return {
+
+        }
+    }
 }
 
 module.exports = {Customer};
