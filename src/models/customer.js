@@ -45,6 +45,10 @@ const ProcuratorsTypePersonal = [
     "REPRESENTANTE_LEGAL", "PROCURADOR", "NAO_APLICA"
 ]
 
+const ProcuratorsTypeBusiness = [
+    "REPRESENTANTE_LEGAL", "PROCURADOR", "NAO_POSSUI"
+]
+
 const BusinessAccountType = [
     "CONTA_DEPOSITO_A_VISTA", "CONTA_POUPANCA", "CONTA_PAGAMENTO_PRE_PAGA", "SEM_TIPO_CONTA"
 ]
@@ -332,6 +336,32 @@ class Customer {
                 currency: faker.finance.currencyCode(),
                 date: formatDate(faker.date.recent())
             }
+        }
+    }
+    get businessFinancialRelations(){
+        return {
+            updateDateTime: faker.date.recent(),
+            startDate: faker.date.past(),
+            productsServicesType: [
+                ProductServicesType[randomize(12)]
+            ],
+            procurators: [
+                {
+                    type: ProcuratorsTypeBusiness[randomize(3)],
+                    cnpjCpfNumber: faker.datatype.number(99999999999).toString(),
+                    civilName: faker.fake('{{name.firstName}} {{name.lastName}}'),
+                    socialName: faker.fake('{{name.firstName}} {{name.lastName}}')
+                }
+            ],
+            accounts: [
+                {
+                    compeCode: faker.datatype.number(999).toString(),
+                    branchCode: faker.datatype.number(9999).toString(),
+                    number: faker.datatype.number(99999999).toString(),
+                    checkDigit: faker.datatype.number(9).toString(),
+                    type: BusinessAccountType[randomize(4)]
+                }
+            ]
         }
     }
 
