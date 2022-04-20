@@ -33,6 +33,10 @@ const InformedIncomeFrequencyType = [
     "DIARIA", "SEMANAL", "QUINZENAL", "MENSAL", "BIMESTRAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL", "SEM_FREQUENCIA_RENDA_INFORMADA", "OUTROS"
 ]
 
+const InformedRevenueFrequencyType = [
+    "DIARIA", "SEMANAL", "QUINZENAL", "MENSAL", "BIMESTRAL", "TRIMESTRAL", "SEMESTRAL", "ANUAL", "SEM_FREQUENCIA_RENDA_INFORMADA", "OUTROS"
+]
+
 const ProductServicesType = [
     "CONTA_DEPOSITO_A_VISTA", "CONTA_POUPANCA", "CONTA_PAGAMENTO_PRE_PAGA", "CARTAO_CREDITO", "OPERACAO_CREDITO", "SEGURO", "PREVIDENCIA", "INVESTIMENTO", "OPERACOES_CAMBIO", "CONTA_SALARIO", "CREDENCIAMENTO", "OUTROS"
 ]
@@ -307,6 +311,30 @@ class Customer {
             }
         }]
     }
+    get businessQualifications(){
+        return {
+            updateDateTime: faker.date.past(),
+            economicActivities: [
+                {
+                    code: faker.datatype.number(9999999),
+                    isMain: true
+                }
+            ],
+            informedRevenue: {
+                frequency: InformedRevenueFrequencyType[randomize(10)],
+                frequencyAdditionalInfo: faker.random.alpha(40),
+                amount: parseFloat(faker.finance.amount()),
+                currency: faker.finance.currencyCode(),
+                year: faker.date.recent().getFullYear()
+            },
+            informedPatrimony: {
+                amount: parseFloat(faker.finance.amount()),
+                currency: faker.finance.currencyCode(),
+                date: formatDate(faker.date.recent())
+            }
+        }
+    }
+
 }
 
 module.exports = {Customer};
