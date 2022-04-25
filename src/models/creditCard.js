@@ -109,6 +109,59 @@ const otherCreditsTypes = [
   'OUTRO'
 ];
 
+const creditLineLimitType = [
+  'LIMITE_CREDITO_TOTAL', 
+  'LIMITE_CREDITO_MODALIDADE_OPERACAO'
+];
+
+const consolidationType = [
+  'CONSOLIDADO', 
+  'INDIVIDUAL'
+];
+
+const lineName = [
+  'CREDITO_A_VISTA', 
+  'CREDITO_PARCELADO', 
+  'SAQUE_CREDITO_BRASIL', 
+  'SAQUE_CREDITO_EXTERIOR', 
+  'EMPRESTIMO_CARTAO_CONSIGNADO', 
+  'OUTROS' 
+];
+
+const creditDebitType = [
+  'CREDITO', 
+  'DEBITO' 
+];
+
+const transactionType = [
+  'PAGAMENTO', 
+  'TARIFA', 
+  'OPERACOES_CREDITO_CONTRATADAS_CARTAO', 
+  'ESTORNO', 'CASHBACK', 
+  'OUTROS'
+];
+
+const paymentType = [
+  'A_VISTA', 
+  'A_PRAZO'
+];
+
+const feeType = [
+  'ANUIDADE', 
+  'SAQUE_CARTAO_BRASIL', 
+  'SAQUE_CARTAO_EXTERIOR', 
+  'AVALIACAO_EMERGENCIAL_CREDITO', 
+  'EMISSAO_SEGUNDA_VIA, TARIFA_PAGAMENTO_CONTAS', 
+  'SMS', 
+  'OUTRA'
+];
+
+const  otherCreditsType = [
+  'CREDITO_ROTATIVO', 
+  'PARCELAMENTO_FATURA', 
+  'EMPRESTIMO', 
+  'OUTROS' 
+]
 function randomize(size){
   return Math.floor(Math.random() * size)
 }
@@ -172,7 +225,7 @@ class CreditCard {
     }
     return bills;
   }
-  get transactions(){
+  get billId_transactions(){
     let transactions = [];
     const index = randomize(10);
     for(let i = 0;  i < index; i++){
@@ -200,6 +253,55 @@ class CreditCard {
         payeeMCC: faker.random.number(9999)
       })
     }
+    return transactions;
+  }
+  get limits(){
+    return{
+      creditLineLimitType: creditLineLimitType[randomize(2)],
+      consolidationType: consolidationType[randomize(2)],
+      identificationNumber:faker.random.number(9999).toString(),
+      lineName: lineName[randomize(6)],
+      lineNameAdditionalInf: "Informações adicionais e complementares",
+      isLimitFlexible: faker.random.boolean(),
+      limitAmountCurrency: "BRL",
+      limitAmount: faker.random.float({ precision: 0.0001 }),
+      usedAmountCurrency: "BRL",
+      usedAmount: faker.random.float({ precision: 0.01 }),
+      availableAmountCurrency: "BRL",
+      availableAmount: faker.random.float({ precision: 0.01 })
+    }
+    
+  }
+
+  get transactions(){
+    let transactions = [];
+    const index = randomize(10);
+    for(let i = 0;  i < index; i++){
+      transactions.push({
+        transactionId: `TXpRMU${faker.random.uuid()}FUazJSMDl`,
+        identificationNumber: faker.random.number(9999).toString(),
+        lineName: lineName[randomize(6)],
+        transactionName: "PGTO",
+        billId: `MTU0O${faker.random.uuid()}NmZkM`,
+        creditDebitType: creditDebitType[randomize(2)],
+        transactionType: transactionType[randomize(6)],
+        transactionalAdditionalInfo: "Informações adicionais",
+        paymentType: paymentType[randomize(2)],
+        feeType: feeType[randomize(8)],
+        feeTypeAdditionalInfo: "Informações adicionais",
+        otherCreditsType: otherCreditsType[randomize(4)],
+        otherCreditsAdditionalInfo: "Informações adicionais",
+        chargeIdentificator: `PARCELA_${faker.random.number()}`,
+        chargeNumber: faker.random.number(),
+        brazilianAmount: faker.random.float({ precision: 0.01 }),
+        amount: faker.random.float({ precision: 0.01 }),
+        currency: "BRL",
+        transactionDate: faker.date.past(),
+        billPostDate: faker.date.past(),
+        payeeMCC: faker.random.number({max: 9999})
+      })
+    } 
+    
     return transactions;
   }
 }
