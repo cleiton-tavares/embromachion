@@ -892,6 +892,381 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Personal Identifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/identifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"identifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personal Qualifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/qualifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"qualifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personal Financial-Relations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/financial-relations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"financial-relations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personal Identifications - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/identifications/batch?save_storage=1&save_csv=1&items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"identifications",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1"
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personal Qualifications - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/qualifications/batch?save_storage=1&items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"qualifications",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personal Financial-Relations - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/personal/financial-relations/batch?save_storage=1&save_csv=1&items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"personal",
+								"financial-relations",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1"
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Identifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/identifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"identifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Qualifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/qualifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"qualifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Financial-Relations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/financial-relations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"financial-relations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Identifications - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/identifications/batch?items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"identifications",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Qualifications - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/qualifications/batch?save_storage=1&items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"qualifications",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Business Financial-Relations - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/customers/v1/business/financial-relations/batch?save_storage=1&save_csv=1&items=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"customers",
+								"v1",
+								"business",
+								"financial-relations",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1"
+								},
+								{
+									"key": "items",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
