@@ -82,6 +82,15 @@ const WarrantySubType = [
     "VEICULOS_AUTOMOTORES"
 ]
 
+
+const NumberOfInstalmentsType = [
+    "DIA", "SEMANA", "MES", "ANO", "SEM_PRAZO_TOTAL"
+]
+
+const ContractRemainingType = [
+    "DIA", "SEMANA", "MES", "ANO", "SEM_PRAZO_REMANESCENTE"
+]
+
 function randomize(size) {
     return Math.floor(Math.random() * size)
 }
@@ -166,6 +175,25 @@ class Financing {
                 warrantyAmount: faker.datatype.float()
             }
         ]
+    }
+
+    get scheduledInstalments(){
+        return {
+            typeNumberOfInstalments: NumberOfInstalmentsType[randomize(5)],
+            totalNumberOfInstalments: faker.datatype.number(999999),
+            typeContractRemaining: ContractRemainingType[randomize(5)],
+            contractRemainingNumber: faker.datatype.number(99999),
+            paidInstalments: faker.datatype.number(99),
+            dueInstalments: faker.datatype.number(99),
+            pastDueInstalments: faker.datatype.number(99),
+            balloonPayments: [
+                {
+                    dueDate: formatDate(faker.date.past()),
+                    currency: faker.finance.currencyCode(),
+                    amount: parseFloat(faker.finance.amount())
+                }
+            ]
+        }
     }
 
 }
