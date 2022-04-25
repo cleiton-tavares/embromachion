@@ -35,7 +35,7 @@ module.exports = ({ models, services }) => {
         return res.json(new Response(new Models[model]()));
       } catch (e) {
         console.error(e, req.traceID);
-        return res.status(500).json(new Response(e.message));
+        return res.status(500).json(new Response({ message: e.message }));
       }
     }
 
@@ -57,7 +57,7 @@ module.exports = ({ models, services }) => {
         return Batch.response(res, `get${model}Batch`, params, result);
       } catch (e) {
         console.error(e, req.traceID);
-        return res.status(500).json(new Response(e.message));
+        return res.status(500).json(new Response({ message: e.message }));
       }
     }
   }
