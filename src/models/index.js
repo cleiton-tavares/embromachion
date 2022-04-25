@@ -1,8 +1,10 @@
 const { Account } = require('./account');
 const { CreditCard } = require('./creditCard');
-const { Contracts } = require('./opcredoverdraft');
+const { Overdraft } = require('./opcredoverdraft');
+const { Loans } = require('./opcredloans');
 module.exports = {
   Account,
   CreditCard,
-  Contracts
+  Overdraft,
+  Loans
 };
