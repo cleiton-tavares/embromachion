@@ -7,20 +7,22 @@
 
     const { IndexController } = controllers.index;
 
+    const  model  =  'InvoiceFinancings' ;
+    const  baseApi  =  '/open-banking/invoice-financings/v1/contracts';
+
     // REGULAR ROUTES
-    express.get('/open-banking/invoice-financings/v1/contracts', (req, res) => IndexController.sigleApi('InvoiceFinancings', '', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id', (req, res) => IndexController.sigleApi('InvoiceFinancings', 'contracts', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/warranties', (req, res) => IndexController.sigleApi('InvoiceFinancings', 'warranties', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments', (req, res) => IndexController.sigleApi('InvoiceFinancings', 'scheduledInstalments', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/payments', (req, res) => IndexController.sigleApi('InvoiceFinancings', 'payments', req, res));
+    express.get(baseApi, (req, res) => IndexController.sigleApi(model, '', req, res));
+    express.get('${baseApi}/:id', (req, res) => IndexController.sigleApi(model, 'contracts', req, res));
+    express.get('${baseApi}/:id/warranties', (req, res) => IndexController.sigleApi(model, 'warranties', req, res));
+    express.get('${baseApi}/:id/scheduled-instalments', (req, res) => IndexController.sigleApi(model, 'scheduledInstalments', req, res));
+    express.get('${baseApi}/:id/payments', (req, res) => IndexController.sigleApi(model, 'payments', req, res));
 
     // BATCH ROUTES
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', '', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/id/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'contracts', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/warranties/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'warranties', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'scheduledInstalments', req, res));
-    express.get('/open-banking/invoice-financings/v1/contracts/:id/payments/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'payments', req, res));
-    
-    
+    express.get('${baseApi}/:id/batch', (req, res) => IndexController.batchApi(model, '', req, res));
+    express.get('${baseApi}/:id/id/batch', (req, res) => IndexController.batchApi(model, 'contracts', req, res));
+    express.get('${baseApi}/:id/warranties/batch', (req, res) => IndexController.batchApi(model, 'warranties', req, res));
+    express.get('${baseApi}/:id/scheduled-instalments/batch', (req, res) => IndexController.batchApi(model, 'scheduledInstalments', req, res));
+    express.get('${baseApi}/:id/payments/batch', (req, res) => IndexController.batchApi(model, 'payments', req, res));
+
   };
   
