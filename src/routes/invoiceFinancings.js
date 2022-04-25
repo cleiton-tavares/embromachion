@@ -21,5 +21,6 @@
     express.get('/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'scheduledInstalments', req, res));
     express.get('/open-banking/invoice-financings/v1/contracts/:id/payments/batch', (req, res) => IndexController.batchApi('InvoiceFinancings', 'payments', req, res));
     
+    
   };
   
