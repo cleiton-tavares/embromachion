@@ -196,6 +196,38 @@ class Financing {
         }
     }
 
+    get payments(){
+        return {
+            paidInstalments: faker.datatype.number(99),
+            contractOutstandingBalance: parseFloat(faker.finance.amount()),
+            releases: [
+                {
+                    paymentId: faker.random.alpha(43),
+                    isOverParcelPayment: true,
+                    instalmentId: faker.random.alpha(46),
+                    paidDate: formatDate(faker.date.past()),
+                    currency: faker.finance.currencyCode(),
+                    paidAmount: parseFloat(faker.finance.amount()),
+                    overParcel: {
+                        fees: [
+                            {
+                                feeName: faker.random.alpha(28),
+                                feeCode: faker.random.alpha(10),
+                                feeAmount: parseFloat(faker.finance.amount()),
+                            }
+                        ],
+                        charges: [
+                            {
+                                chargeType: ChargeType[randomize(7)],
+                                chargeAdditionalInfo: faker.random.alpha(20),
+                                chargeAmount: parseFloat(faker.finance.amount()),
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
 }
 
 module.exports = {Financing};
