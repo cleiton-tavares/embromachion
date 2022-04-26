@@ -1,7 +1,6 @@
 {
-	
 	"info": {
-		"_postman_id": "53adcda7-1575-461e-9d7c-aaf7a92b427b",
+		"_postman_id": "60e21619-9aa1-4dd7-8a60-9f0cc2b5d3af",
 		"name": "Open finance - Mock",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -390,7 +389,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/accounts/v1/account",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -398,21 +397,21 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"accounts",
+								"credit-cards-accounts",
 								"v1",
-								"account"
+								"accounts"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Credit Card - account/:id/bills",
+					"name": "Credit Card - accounts/:id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/bills",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -420,16 +419,15 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"credit-cards-account",
+								"credit-cards-accounts",
 								"v1",
-								"account",
-								":id",
-								"bills"
+								"accounts",
+								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": null
 								}
 							]
 						}
@@ -437,12 +435,12 @@
 					"response": []
 				},
 				{
-					"name": "Credit Card - account/:id/transactions",
+					"name": "Credit Card - accounts/:id/bills",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/transactions",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -450,16 +448,112 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"credit-cards-account",
+								"credit-cards-accounts",
 								"v1",
-								"account",
+								"accounts",
+								":id",
+								"bills"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/bills/:bullId/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills/:bullId/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"bills",
+								":bullId",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								},
+								{
+									"key": "bullId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/limits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/limits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"limits"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
 								":id",
 								"transactions"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": null
 								}
 							]
 						}
@@ -468,6 +562,99 @@
 				},
 				{
 					"name": "Credit Card - Account/:id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/id/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/bills - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -484,6 +671,146 @@
 								"v1",
 								"contracts",
 								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/bills/:bullId/batch - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/limits/batch- Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/limits/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"limits",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/transactions - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/transactions/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"transactions",
 								"batch"
 							],
 							"query": [

@@ -161,21 +161,24 @@ const  otherCreditsType = [
   'PARCELAMENTO_FATURA', 
   'EMPRESTIMO', 
   'OUTROS' 
-]
+];
+
 function randomize(size){
   return Math.floor(Math.random() * size)
 }
 
 class CreditCard {
   constructor(id) {
-    this.creditCardAccountId = id || faker.random.uuid();
-    this.brandName = faker.company.companyName();
-    this.companyCnpj = faker.random.number(99999999999999);
-    this.name = faker.name.findName();
-    this.productType = productTypes[randomize(25)];
-    this.productAdditionalInfo = 'NA';
-    this.creditCardNetwork = creditCardNetwork[randomize(8)];
-    this.networkAdditionalInfo = 'NA';
+    this[0] = {
+    creditCardAccountId: id || faker.random.uuid(),
+      brandName : faker.company.companyName(),
+      companyCnpj : faker.random.number(99999999999999),
+      name : faker.name.findName(),
+      productType : productTypes[randomize(25)],
+      productAdditionalInfo : 'NA',
+      creditCardNetwork : creditCardNetwork[randomize(8)],
+      networkAdditionalInfo : 'NA'
+    }
   }
   get account(){
     return {
@@ -272,7 +275,6 @@ class CreditCard {
     }
     
   }
-
   get transactions(){
     let transactions = [];
     const index = randomize(10);
@@ -304,6 +306,7 @@ class CreditCard {
     
     return transactions;
   }
+  
 }
 
 module.exports = { CreditCard };
