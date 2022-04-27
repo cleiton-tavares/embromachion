@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e37a2429-8df7-46bf-81bf-dab46663c6d0",
+		"_postman_id": "38834d5f-2e8f-4725-a757-663f2c562a38",
 		"name": "Open finance - Mock",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -389,26 +389,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/account",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"account"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Credit Card - account/:id/bills",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/bills",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -416,16 +397,37 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"credit-cards-account",
+								"credit-cards-accounts",
 								"v1",
-								"account",
-								":id",
-								"bills"
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": null
 								}
 							]
 						}
@@ -433,12 +435,12 @@
 					"response": []
 				},
 				{
-					"name": "Credit Card - account/:id/transactions",
+					"name": "Credit Card - accounts/:id/bills",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/credit-cards-account/v1/account/:id/transactions",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -446,16 +448,112 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"credit-cards-account",
+								"credit-cards-accounts",
 								"v1",
-								"account",
+								"accounts",
+								":id",
+								"bills"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/bills/:bullId/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills/:bullId/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"bills",
+								":bullId",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								},
+								{
+									"key": "bullId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/limits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/limits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"limits"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - accounts/:id/transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
 								":id",
 								"transactions"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": null
 								}
 							]
 						}
@@ -468,26 +566,123 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/credit-card/account/:id/batch?save_storage=1&save_csv=1&items=100",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/batch?items=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3002",
 							"path": [
-								"credit-card",
-								"account",
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
 								":id",
 								"batch"
 							],
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/id/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/bills - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
@@ -497,7 +692,527 @@
 							"variable": [
 								{
 									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/bills/:bullId/batch - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/limits/batch- Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/limits/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"limits",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit Card - Account/:id/transactions - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/transactions/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"credit-cards-accounts",
+								"v1",
+								"accounts",
+								":id",
+								"transactions",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InvoiceFinancings",
+			"item": [
+				{
+					"name": "InvoiceFinancings - contracts/:id Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/id/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/warranties - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/warranties/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"warranties",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments - Batch Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/payments/batch?items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"payments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - Contracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/warranties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/warranties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"warranties"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts/:id/payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InvoiceFinancings - contracts - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
 									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
 								}
 							]
 						}
