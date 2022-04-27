@@ -19,7 +19,6 @@ module.exports = ({ express, controllers }) => {
   express.get(`${baseApi}/:id/payments`, (req, res) => IndexController.sigleApi(model, 'payments', req, res));
 
   // Batch routes
-  express.get(baseApi, (req, res) => IndexController.batchApi(model, '', req, res));
   express.get(`${baseApi}/:id/batch`, (req, res) => IndexController.batchApi(model, 'contract', req, res));
   express.get(`${baseApi}/:id/warranties/batch`, (req, res) => IndexController.batchApi(model, 'warranty', req, res));
   express.get(`${baseApi}/:id/scheduled-instalments/batch`, (req, res) => IndexController.batchApi(model, 'instalments', req, res));
