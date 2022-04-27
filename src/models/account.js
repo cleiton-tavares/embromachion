@@ -48,38 +48,50 @@ function randomize(size){
   return Math.floor(Math.random() * size)
 }
 
+function formatDate(date) {
+  return [date.getFullYear(),
+    date.getMonth().toString().padStart(2, '0'),
+    date.getDay().toString().padStart(2, '0')].join('-')
+}
+
+
 class Account {
   constructor(id) {
     this[0] = {
       brandName: faker.company.companyName(),
-      companyCnpj: faker.random.number(99999999999999),
+      companyCnpj: faker.datatype.number(99999999999999).toString(),
       type: AccountTypes[randomize(3)],
-      compeCode: faker.random.number(999),
-      branchCode: faker.random.number(9999),
-      number: faker.random.number(),
-      checkDigit: faker.random.number(9),
-      accountId: id || faker.random.uuid()
+      compeCode: faker.datatype.number(999).toString(),
+      branchCode: faker.datatype.number(9999).toString(),
+      number: faker.datatype.number(999999999).toString(),
+      checkDigit: faker.datatype.number(9).toString(),
+      accountId: id || faker.datatype.uuid()
     };
   }
+
   get account(){
+    return [this[0]]
+  }
+
+  get accountId(){
     return {
       compeCode: this[0].compeCode,
       branchCode: this[0].branchCode,
       number: this[0].number,
-      checkDigit: this[0].number,
+      checkDigit: this[0].checkDigit,
       type: this[0].type,
       subtype: AccountSubTypes[randomize(3)],
-      currency: "BRL"
+      currency: faker.finance.currencyCode()
     }
   }
   get balance(){
     return {
-      availableAmount: faker.random.float({ precision: 0.1 }),
-      availableAmountCurrency: "BRL",
-      blockedAmount: faker.random.float({ precision: 0.1 }),
-      blockedAmountCurrency: "BRL",
-      automaticallyInvestedAmount: faker.random.float({ precision: 0.1 }),
-      automaticallyInvestedAmountCurrency: "BRL"
+      availableAmount: parseFloat(faker.finance.amount()),
+      availableAmountCurrency: faker.finance.currencyCode(),
+      blockedAmount: parseFloat(faker.finance.amount()),
+      blockedAmountCurrency: faker.finance.currencyCode(),
+      automaticallyInvestedAmount: parseFloat(faker.finance.amount()),
+      automaticallyInvestedAmountCurrency: faker.finance.currencyCode(),
     }
   }
   get transactions(){
@@ -87,15 +99,15 @@ class Account {
     const size = randomize(100);
     for(let i = 0; i < size; i++){
       items.push({
-        transactionId: faker.random.uuid(),
+        transactionId: faker.datatype.uuid(),
         completedAuthorisedPaymentType: creditDebitTypes[randomize(2)],
         creditDebitType: transactionNames[randomize(2)],
-        transactionName: `TXpRMU9UQ${faker.random.uuid()}WhZV2${faker.random.uuid()}`,
+        transactionName: faker.random.alpha(60).toUpperCase(),
         type: transactionTypes[randomize(17)],
-        amount: faker.random.float({ precision: 0.1 }),
-        transactionCurrency: "BRL",
-        transactionDate: faker.date.past(),
-        partieCnpjCpf: faker.random.number(99999999999999),
+        amount: parseFloat(faker.finance.amount()),
+        transactionCurrency: faker.finance.currencyCode(),
+        transactionDate: formatDate(faker.date.past()),
+        partieCnpjCpf: faker.datatype.number(99999999999999).toString(),
         partiePersonType: partiePersonTypes[randomize(2)],
         partieCompeCode: this[0].compeCode,
         partieBranchCode: this[0].branchCode,
@@ -107,12 +119,12 @@ class Account {
   }
   get limits(){
     return {
-      overdraftContractedLimit: faker.random.float({ precision: 0.1 }),
-      overdraftContractedLimitCurrency: "BRL",
-      overdraftUsedLimit: faker.random.float({ precision: 0.1 }),
-      overdraftUsedLimitCurrency: "BRL",
-      unarrangedOverdraftAmount: faker.random.float({ precision: 0.1 }),
-      unarrangedOverdraftAmountCurrency: "BRL"
+      overdraftContractedLimit: parseFloat(faker.finance.amount()),
+      overdraftContractedLimitCurrency: faker.finance.currencyCode(),
+      overdraftUsedLimit: parseFloat(faker.finance.amount()),
+      overdraftUsedLimitCurrency: faker.finance.currencyCode(),
+      unarrangedOverdraftAmount: parseFloat(faker.finance.amount()),
+      unarrangedOverdraftAmountCurrency: faker.finance.currencyCode()
     }
   }
 }
