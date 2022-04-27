@@ -7,9 +7,9 @@ module.exports = ({ express, controllers }) => {
 
   const { IndexController } = controllers.index;
 
-  const model = 'Overdraft';
+  const model = 'Loans';
 
-  const baseApi = '/open-banking/unarranged-accounts-overdraft/v1/contracts';
+  const baseApi = '/open-banking/loans/v1/contracts';
 
   // REGULAR ROUTES
   express.get(baseApi, (req, res) => IndexController.sigleApi(model, '', req, res));

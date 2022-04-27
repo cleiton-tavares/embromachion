@@ -4,7 +4,17 @@ function randomize(size) {
     return Math.floor(Math.random() * size)
 }
 
-const productTypes = ['ADIANTAMENTO_A_DEPOSITANTES']
+const productTypes = ['EMPRESTIMOS']
+
+const productSubType = [ "HOME_EQUITY", 
+"CHEQUE_ESPECIAL", 
+"CONTA_GARANTIDA", 
+"CAPITAL_GIRO_TETO_ROTATIVO", 
+"CREDITO_PESSOAL_SEM_CONSIGNACAO", 
+"CREDITO_PESSOAL_COM_CONSIGNACAO", 
+"MICROCREDITO_PRODUTIVO_ORIENTADO", 
+"CAPITAL_GIRO_PRAZO_VENCIMENTO_ATE_365_DIAS", 
+"CAPITAL_GIRO_PRAZO_VENCIMENTO_SUPERIOR_365_DIAS" ]
 
 const instalmentPeriodicity = [ "SEM_PERIODICIDADE_REGULAR", 
     "SEMANAL", 
@@ -83,7 +93,8 @@ const warrantyType = [ "SEM_TIPO_GARANTIA",
     "GARANTIAS_INTERNACIONAIS", 
     "OPERACOES_GARANTIDAS_OUTRAS_ENTIDADES", 
     "ACORDOS_COMPENSACAO" ]
-    const warrantySubType = [ "ACOES_DEBENTURES", 
+
+const warrantySubType = [ "ACOES_DEBENTURES", 
     "APLICACOES_FINANCEIRAS_RENDA_FIXA", 
     "APLICACOES_FINANCEIRAS_RENDA_VARIAVEL", 
     "APOLICES_CREDITO_EXPORTACAO", 
@@ -145,14 +156,14 @@ const typeContractRemaining = [ "DIA",
     "ANO", 
     "SEM_PRAZO_REMANESCENTE" ]
 
-class Overdraft {
+class Loans {
     constructor(id) {
         this[0] = {
             contractId: id || faker.random.uuid(),
             brandName: faker.company.companyName(),
             companyCnpj: faker.random.number(99999999999999),
             productType: productTypes[0],
-            productSubType: productTypes[0],
+            productSubType: productSubType[randomize(9)],
             ipocCode: faker.random.number(9999999999999)
         }
     }
@@ -162,7 +173,7 @@ class Overdraft {
             ipocCode: this[0].ipocCode,
             productName: "AD",
             productType: productTypes[0],
-            productSubType: productTypes[0],
+            productSubType: productSubType[randomize(9)],
             contractDate: faker.date.past(),
             disbursementDate: faker.date.past(),
             settlementDate: faker.date.past(),
@@ -174,6 +185,8 @@ class Overdraft {
             firstInstalmentDueDate: faker.date.future(),
             CET: faker.random.number(1),
             amortizationScheduled: amortizationScheduled[randomize(5)],
+            amortizationScheduledAdditionalInfo: faker.lorem.words(50),
+            cnpjConsignee:faker.random.number(99999999999999),
             interestRates: [
                 {
                     taxType: taxType[randomize(2)],
@@ -224,6 +237,7 @@ class Overdraft {
             contractRemainingNumber: faker.random.number(999999),
             paidInstalments: faker.random.number(99),
             dueInstalments: faker.random.number(99),
+            pastDueInstalments: faker.random.number(99),
             balloonPayments: [
                 {
                     dueDate:faker.date.future(),
@@ -273,4 +287,4 @@ class Overdraft {
     }
 
 
-    module.exports = { Overdraft };
+    module.exports = { Loans };
