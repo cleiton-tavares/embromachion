@@ -167,14 +167,18 @@ class Financing {
     }
 
     get warranties(){
-        return [
-            {
+        let warranties = [];
+        const index = randomize(10);
+        for(let i = 0;  i < index; i++){
+            warranties.push({
+
                 currency: faker.finance.currencyCode(),
                 warrantyType: WarrantyType[randomize(14)],
                 warrantySubType: WarrantySubType[randomize(50)],
                 warrantyAmount: faker.datatype.float()
-            }
-        ]
+            })
+       }
+       return warranties
     }
 
     get scheduledInstalments(){

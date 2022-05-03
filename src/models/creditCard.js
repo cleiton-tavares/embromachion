@@ -170,7 +170,7 @@ function randomize(size){
 class CreditCard {
   constructor(id) {
     this[0] = {
-    creditCardAccountId: id || faker.random.uuid(),
+      creditCardAccountId: id || faker.random.uuid(),
       brandName : faker.company.companyName(),
       companyCnpj : faker.random.number(99999999999999),
       name : faker.name.findName(),
@@ -178,9 +178,12 @@ class CreditCard {
       productAdditionalInfo : 'NA',
       creditCardNetwork : creditCardNetwork[randomize(8)],
       networkAdditionalInfo : 'NA'
-    }
+    };
   }
   get account(){
+    return [this[0]]
+  }
+  get accountid(){
     return {
       name: faker.random.word(),
       productType: productTypes[randomize(25)],
@@ -258,23 +261,7 @@ class CreditCard {
     }
     return transactions;
   }
-  get limits(){
-    return{
-      creditLineLimitType: creditLineLimitType[randomize(2)],
-      consolidationType: consolidationType[randomize(2)],
-      identificationNumber:faker.random.number(9999).toString(),
-      lineName: lineName[randomize(6)],
-      lineNameAdditionalInf: "Informações adicionais e complementares",
-      isLimitFlexible: faker.random.boolean(),
-      limitAmountCurrency: "BRL",
-      limitAmount: faker.random.float({ precision: 0.0001 }),
-      usedAmountCurrency: "BRL",
-      usedAmount: faker.random.float({ precision: 0.01 }),
-      availableAmountCurrency: "BRL",
-      availableAmount: faker.random.float({ precision: 0.01 })
-    }
-    
-  }
+  
   get transactions(){
     let transactions = [];
     const index = randomize(10);
@@ -306,6 +293,26 @@ class CreditCard {
     
     return transactions;
   }
+  get limits(){
+
+    return [{
+      
+      creditLineLimitType: creditLineLimitType[randomize(2)],
+      consolidationType: consolidationType[randomize(2)],
+      identificationNumber:faker.random.number(9999).toString(),
+      lineName: lineName[randomize(6)],
+      lineNameAdditionalInf: "Informações adicionais e complementares",
+      isLimitFlexible: faker.random.boolean(),
+      limitAmountCurrency: "BRL",
+      limitAmount: faker.random.float({ precision: 0.0001 }),
+      usedAmountCurrency: "BRL",
+      usedAmount: faker.random.float({ precision: 0.01 }),
+      availableAmountCurrency: "BRL",
+      availableAmount: faker.random.float({ precision: 0.01 })
+    }]
+    
+  }
+  
   
 }
 

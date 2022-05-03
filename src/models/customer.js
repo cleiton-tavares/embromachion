@@ -183,7 +183,7 @@ class Customer {
         }]
     }
     get personalQualifications(){
-        return {
+        return [{
             updateDateTime: faker.date.past(),
             companyCnpj: faker.datatype.number(99999999999999).toString(),
             occupationCode: OccupationMainCodeType[randomize(3)],
@@ -199,7 +199,7 @@ class Customer {
                 currency: "BRL",
                 year: faker.date.past().getFullYear()
             }
-        }
+        }]
     }
     get personalFinancialRelations(){
         let productsServicesTypeArray = [];
