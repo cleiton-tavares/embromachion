@@ -7,7 +7,7 @@ module.exports = ({ express, controllers }) => {
 
   const { IndexController } = controllers.index;
 
-  const model = 'Contracts';
+  const model = 'Overdraft';
 
   const baseApi = '/open-banking/unarranged-accounts-overdraft/v1/contracts';
 
