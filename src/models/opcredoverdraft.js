@@ -145,7 +145,7 @@ const typeContractRemaining = [ "DIA",
     "ANO", 
     "SEM_PRAZO_REMANESCENTE" ]
 
-class Contracts {
+class Overdraft {
     constructor(id) {
         this[0] = {
             contractId: id || faker.random.uuid(),
@@ -273,4 +273,4 @@ class Contracts {
     }
 
 
-    module.exports = { Contracts };
+    module.exports = { Overdraft };
