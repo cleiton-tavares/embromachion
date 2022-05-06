@@ -213,7 +213,11 @@ class InvoiceFinancings {
     }
     
   }
-  get contracts(){
+  get contrats(){
+    return [this[0]]
+  }
+
+  get contractsid(){
     return {
       contractNumber: faker.random.number(9999999999999).toString(),
       ipocCode: faker.random.alphaNumeric(67,{

@@ -99,6 +99,7 @@ class Account {
     const size = randomize(100);
     for(let i = 0; i < size; i++){
       items.push({
+
         transactionId: faker.datatype.uuid(),
         completedAuthorisedPaymentType: creditDebitTypes[randomize(2)],
         creditDebitType: transactionNames[randomize(2)],
@@ -113,7 +114,8 @@ class Account {
         partieBranchCode: this[0].branchCode,
         partieNumber: this[0].number,
         partieCheckDigit: this[0].checkDigit
-      });
+
+      })
     }
     return items;
   }

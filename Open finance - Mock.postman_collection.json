@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "38834d5f-2e8f-4725-a757-663f2c562a38",
+		"_postman_id": "36b9869f-b211-49c6-a729-f1e58d9452dd",
 		"name": "Open finance - Mock",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -153,7 +153,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/transactions/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/transactions/batch?items=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -171,21 +171,23 @@
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
-									"value": "1000"
+									"value": "3"
 								}
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -198,7 +200,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/overdraft-limits/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/overdraft-limits/batch?items=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -216,21 +218,23 @@
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
-									"value": "1000"
+									"value": "3"
 								}
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -659,7 +663,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=100",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -667,10 +671,11 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"invoice-financings",
+								"credit-cards-accounts",
 								"v1",
-								"contracts",
+								"accounts",
 								":id",
+								"bills",
 								"batch"
 							],
 							"query": [
@@ -686,7 +691,8 @@
 								},
 								{
 									"key": "items",
-									"value": "100"
+									"value": "20",
+									"disabled": true
 								}
 							],
 							"variable": [
@@ -700,12 +706,12 @@
 					"response": []
 				},
 				{
-					"name": "Credit Card - Account/:id/bills/:bullId/batch - Batch",
+					"name": "Credit Card - Account/:id/bills/:bullId/transactions - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=100",
+							"raw": "http://localhost:3002/open-banking/credit-cards-accounts/v1/accounts/:id/bills/:bullId/transactions/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -713,10 +719,13 @@
 							"port": "3002",
 							"path": [
 								"open-banking",
-								"invoice-financings",
+								"credit-cards-accounts",
 								"v1",
-								"contracts",
+								"accounts",
 								":id",
+								"bills",
+								":bullId",
+								"transactions",
 								"batch"
 							],
 							"query": [
@@ -732,12 +741,17 @@
 								},
 								{
 									"key": "items",
-									"value": "100"
+									"value": "10",
+									"disabled": true
 								}
 							],
 							"variable": [
 								{
 									"key": "id",
+									"value": null
+								},
+								{
+									"key": "bullId",
 									"value": null
 								}
 							]
@@ -746,7 +760,7 @@
 					"response": []
 				},
 				{
-					"name": "Credit Card - Account/:id/limits/batch- Batch",
+					"name": "Credit Card - Account/:id/limits- Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1597,378 +1611,6 @@
 			]
 		},
 		{
-			"name": "Financing",
-			"item": [
-				{
-					"name": "Contracts",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/warranties",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/warranties",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"warranties"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/scheduled-instalments",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/scheduled-instalments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"scheduled-instalments"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/payments",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/payments",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"payments"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts - Batch",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/batch?items=1000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "1000"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id - Batch",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/batch?items=1000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "1000"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/warranties - Batch",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/warranties/batch?items=1000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"warranties",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "1000"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/scheduled-instalments - Batch",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/scheduled-instalments/batch?items=1000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"scheduled-instalments",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "1000"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Contracts/:id/payments - Batch",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/payments/batch?items=1000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"financings",
-								"v1",
-								"contracts",
-								":id",
-								"payments",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "1000"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Una. Acc. Overdraft",
 			"item": [
 				{
@@ -2330,6 +1972,779 @@
 								{
 									"key": "id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Financing",
+			"item": [
+				{
+					"name": "Contracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/warranties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/warranties?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"warranties"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/scheduled-instalments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/scheduled-instalments?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id:id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/:id/batch?items=16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "16"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/warranties - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/warranties/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"warranties",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/scheduled-instalments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/scheduled-instalments/batch?items=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "20"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/payments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/financings/v1/contracts/:id/payments/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"financings",
+								"v1",
+								"contracts",
+								":id",
+								"payments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loans",
+			"item": [
+				{
+					"name": "Contracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/warranties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/warranties?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"warranties"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/scheduled-instalments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/scheduled-instalments?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/payments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/batch?items=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id:id - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/id/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "16",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/warranties - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/warranties/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"warranties",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/scheduled-instalments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/scheduled-instalments/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contracts/:id/payments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/payments/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"loans",
+								"v1",
+								"contracts",
+								":id",
+								"payments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
 								}
 							]
 						}

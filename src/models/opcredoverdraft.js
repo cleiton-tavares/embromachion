@@ -157,6 +157,10 @@ class Overdraft {
         }
     }
     get contract(){
+        
+        return [this[0]]
+    }
+    get contractid(){
         return {
             contractNumber: this[0].contractId,
             ipocCode: this[0].ipocCode,
@@ -209,13 +213,19 @@ class Overdraft {
         }
       }
       get warranty(){
-        return {
-          currency: "BRL",
-          warrantyType: warrantyType[randomize(14)],
-          warrantySubType: warrantySubType[randomize(50)],
-          warrantyAmount: faker.random.number(99999)
+        let warrantys = [];
+        const index = randomize(10);
+        for(let i = 0;  i < index; i++){
+            warrantys.push({
+                currency: "BRL",
+                warrantyType: warrantyType[randomize(14)],
+                warrantySubType: warrantySubType[randomize(50)],
+                warrantyAmount: faker.random.number(99999)  
+           })
         }
+        return  [warrantys]
       }
+
       get instalments(){
         return {
             typeNumberOfInstalments: typeNumberOfInstalments[randomize(5)],

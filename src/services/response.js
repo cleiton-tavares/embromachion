@@ -8,11 +8,20 @@ class Response {
       next: 'https://api.banco.com.br/open-banking/api/v1/resource',
       last: 'https://api.banco.com.br/open-banking/api/v1/resource'
     };
-    this.meta = {
-      "totalRecords": data.length,
-      "totalPages": 1,
-      "requestDateTime": new Date().toISOString()
+    if(data.length == null){
+      this.meta = {
+        "totalRecords": 1,
+        "totalPages": 1,
+        "requestDateTime": new Date().toISOString()
+      }
+    } else{
+      this.meta = {
+        "totalRecords": data.length,
+        "totalPages": 1,
+        "requestDateTime": new Date().toISOString()
+      }
     }
+    
   }
 }
 
