@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "36b9869f-b211-49c6-a729-f1e58d9452dd",
+		"_postman_id": "fe6fc111-3be8-40a8-a9b2-dec3716e0f25",
 		"name": "Open finance - Mock",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -107,7 +107,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/balance?items=1000",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/balance/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -119,14 +119,10 @@
 								"v1",
 								"account",
 								":id",
-								"balance"
+								"balance",
+								"batch"
 							],
 							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
 								{
 									"key": "save_csv",
 									"value": "1",
@@ -134,7 +130,8 @@
 								},
 								{
 									"key": "items",
-									"value": "1000"
+									"value": "1000",
+									"disabled": true
 								}
 							],
 							"variable": [
@@ -527,7 +524,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": null
+									"value": "1"
 								}
 							]
 						}
@@ -859,12 +856,12 @@
 			"name": "InvoiceFinancings",
 			"item": [
 				{
-					"name": "InvoiceFinancings - contracts/:id Batch",
+					"name": "contracts/:id/payments/ - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/id/batch?items=100",
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/payments/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -876,7 +873,7 @@
 								"v1",
 								"contracts",
 								":id",
-								"id",
+								"payments",
 								"batch"
 							],
 							"query": [
@@ -892,7 +889,8 @@
 								},
 								{
 									"key": "items",
-									"value": "100"
+									"value": "100",
+									"disabled": true
 								}
 							],
 							"variable": [
@@ -906,7 +904,7 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/warranties - Batch",
+					"name": "contracts/:id/warranties - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -953,12 +951,12 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments - Batch",
+					"name": "contracts/:id/scheduled-instalments",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments/batch?items=100",
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -970,8 +968,7 @@
 								"v1",
 								"contracts",
 								":id",
-								"scheduled-instalments",
-								"batch"
+								"scheduled-instalments"
 							],
 							"query": [
 								{
@@ -983,10 +980,6 @@
 									"key": "save_csv",
 									"value": "1",
 									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "100"
 								}
 							],
 							"variable": [
@@ -1000,54 +993,7 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments - Batch Copy",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/payments/batch?items=100",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3002",
-							"path": [
-								"open-banking",
-								"invoice-financings",
-								"v1",
-								"contracts",
-								":id",
-								"payments",
-								"batch"
-							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "items",
-									"value": "100"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "InvoiceFinancings - Contracts",
+					"name": "Contracts",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1069,7 +1015,7 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id",
+					"name": "contracts/:id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1098,7 +1044,52 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/warranties",
+					"name": "contracts/:id/scheduled-instalments - Batch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments/batch?save_storage=1&save_csv=1&items=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"open-banking",
+								"invoice-financings",
+								"v1",
+								"contracts",
+								":id",
+								"scheduled-instalments",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1"
+								},
+								{
+									"key": "save_csv",
+									"value": "1"
+								},
+								{
+									"key": "items",
+									"value": "100"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contracts/:id/warranties",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1128,12 +1119,12 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/scheduled-instalments",
+					"name": "contracts/:id - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/scheduled-instalments",
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/id/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1145,7 +1136,25 @@
 								"v1",
 								"contracts",
 								":id",
-								"scheduled-instalments"
+								"id",
+								"batch"
+							],
+							"query": [
+								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "save_csv",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "100",
+									"disabled": true
+								}
 							],
 							"variable": [
 								{
@@ -1158,7 +1167,7 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts/:id/payments",
+					"name": "contracts/:id/payments",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1188,7 +1197,7 @@
 					"response": []
 				},
 				{
-					"name": "InvoiceFinancings - contracts - Batch",
+					"name": "contracts - Batch",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1760,7 +1769,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/unarranged-accounts-overdraft/v1/contracts/:id/batch?save_storage=1&save_csv=1&items=1000",
+							"raw": "http://localhost:3002/open-banking/unarranged-accounts-overdraft/v1/contracts/:id/batch",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1777,15 +1786,18 @@
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "save_csv",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "items",
-									"value": "1000"
+									"value": "1000",
+									"disabled": true
 								}
 							],
 							"variable": [
