@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fe6fc111-3be8-40a8-a9b2-dec3716e0f25",
+		"_postman_id": "f88aba8f-657f-45d8-8efa-0b32cc13fe8b",
 		"name": "Open finance - Mock",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -60,7 +60,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/id/batch?items=100",
+							"raw": "http://localhost:3002/open-banking/accounts/v1/account/:id/id/batch?save_storage=1&save_csv=1&items=100",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -78,13 +78,11 @@
 							"query": [
 								{
 									"key": "save_storage",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "save_csv",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "items",
@@ -124,13 +122,18 @@
 							],
 							"query": [
 								{
+									"key": "save_storage",
+									"value": "1",
+									"disabled": true
+								},
+								{
 									"key": "save_csv",
 									"value": "1",
 									"disabled": true
 								},
 								{
 									"key": "items",
-									"value": "1000",
+									"value": "100",
 									"disabled": true
 								}
 							],
@@ -970,18 +973,6 @@
 								":id",
 								"scheduled-instalments"
 							],
-							"query": [
-								{
-									"key": "save_storage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "save_csv",
-									"value": "1",
-									"disabled": true
-								}
-							],
 							"variable": [
 								{
 									"key": "id",
@@ -1202,7 +1193,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=1",
+							"raw": "http://localhost:3002/open-banking/invoice-financings/v1/contracts/:id/batch?items=50",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1229,7 +1220,7 @@
 								},
 								{
 									"key": "items",
-									"value": "1"
+									"value": "50"
 								}
 							],
 							"variable": [
