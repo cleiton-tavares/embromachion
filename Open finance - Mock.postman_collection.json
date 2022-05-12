@@ -2583,7 +2583,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/id/batch",
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/id/batch?items=16",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2611,8 +2611,7 @@
 								},
 								{
 									"key": "items",
-									"value": "16",
-									"disabled": true
+									"value": "16"
 								}
 							],
 							"variable": [
@@ -2674,7 +2673,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/scheduled-instalments/batch",
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/scheduled-instalments/batch?items=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2699,6 +2698,10 @@
 									"key": "save_csv",
 									"value": "1",
 									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
 								}
 							],
 							"variable": [
@@ -2717,7 +2720,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/payments/batch",
+							"raw": "http://localhost:3002/open-banking/loans/v1/contracts/:id/payments/batch?items=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -2742,6 +2745,10 @@
 									"key": "save_csv",
 									"value": "1",
 									"disabled": true
+								},
+								{
+									"key": "items",
+									"value": "10"
 								}
 							],
 							"variable": [
