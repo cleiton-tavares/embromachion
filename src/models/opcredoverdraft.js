@@ -183,7 +183,7 @@ class Overdraft {
                     taxType: taxType[randomize(2)],
                     interestRateType: interestRateType[randomize(2)],
                     taxPeriodicity: taxPeriodicity[randomize(2)],
-                    calculation: taxPeriodicity[randomize(3)],
+                    calculation: calculation[randomize(3)],
                     referentialRateIndexerType: referentialRateIndexerType[randomize(7)],
                     referentialRateIndexerSubType: referentialRateIndexerSubType[randomize(19)],
                     referentialRateIndexerAdditionalInfo: faker.lorem.words(50),
